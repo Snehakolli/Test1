@@ -1,0 +1,67 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link href="StyleSheet.css" rel="stylesheet" /> 
+</head>
+<body style="height: 549px">
+    <form id="form1" runat="server">
+    <table style="font-family:Arial;margin-left:auto;margin-right:auto">
+        <tr>
+            <td colspan="2" style="width:800px; height:80px; background-color:cornflowerblue; text-align:center">
+                <h1 style="color:aliceblue">LOGIN</h1>
+            </td>
+            <%--<td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:aliceblue;width:800px;height:500px">
+                <table style="font-family:Arial;margin-left:auto;margin-right:auto">
+                    <tr>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <h3 style="margin-left:auto;margin-right:auto;color:aliceblue">User Name</h3>
+                        </td>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <asp:TextBox ID="uname" runat="server"></asp:TextBox>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <h3 style="margin-left:auto;margin-right:auto;color:aliceblue">Password</h3>
+                        </td>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <asp:TextBox ID="pwd" runat="server" TextMode="Password"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">
+                          
+                            <asp:Button ID="Button1" runat="server" Text="Login" class="button" OnClick="Button1_Click"  />
+                          
+                        </td>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">
+                        
+                            <asp:Button ID="Button2" runat="server" class="button" OnClick="Button2_Click" Text="Sign up" />
+                        
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <%--<td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:cornflowerblue;width:800px;height:25px">
+                
+            </td>
+            <%-- <td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+    </table>
+    </form>
+    </body>
+</html>

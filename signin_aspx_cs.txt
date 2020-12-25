@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using sample;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Windows;
+using System.Windows.Forms;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Logic obj = new Logic();
+        string name = uname.Text;
+        string passw = pwd.Text;
+        string str1 = "select username from userlogin ";
+        string str2 = "select pswd from userlogin ";
+        //string str3 = "Select count(*) from userlogin as cnt";
+        DataSet ds = obj.getDataSet(str1);
+        DataSet ds1 = obj.getDataSet(str2);
+       
+   
+        int count = ds.Tables[0].Rows.Count;
+       
+        int flag = 0;
+        
+        
+        for (int i = 0; i < count; i++)
+        {
+            
+            //int j = 0;
+            //while (j != 1)
+           // {
+                DataRow dr = ds.Tables[0].Rows[i];
+                DataRow dr1 = ds1.Tables[0].Rows[i];
+                
+                if (name == dr["username"].ToString())
+                { flag = 1;
+                    if (name == dr["username"].ToString() && passw == dr1["pswd"].ToString())
+                    {
+                        Response.Redirect("Home.aspx");
+                       // j = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect Password");
+                        //j = 1;
+                        i = count;
+                    }
+                    
+                }
+                else
+                {
+                    flag = 0;
+                    //j = 1;
+                }
+
+           // } //while
+     
+        } // for
+        if (flag == 0)
+        {
+
+            MessageBox.Show("User Unavailable");
+
+        }
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("singup.aspx");
+    }
+}

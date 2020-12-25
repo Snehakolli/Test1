@@ -1,0 +1,125 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="signup.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link href="StyleSheet.css" rel="stylesheet" /> 
+</head>
+<body style="height: 549px">
+    <form id="form1" runat="server">
+    <table style="font-family:Arial;margin-left:auto;margin-right:auto">
+        <tr>
+            <td colspan="2" style="width:800px; height:80px; background-color:cornflowerblue; text-align:center">
+                <h1 style="color:aliceblue">SIGN UP</h1>
+            </td>
+            <%--<td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:aliceblue;width:800px;height:500px">
+                <table style="font-family:Arial;margin-left:auto;margin-right:auto">
+                    <tr>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">User Name</h4>
+                        </td>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <asp:TextBox ID="uname" runat="server" ValidationGroup="aa"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="uname" runat="server" ErrorMessage="*" ForeColor="Red" ValidationGroup="aa"></asp:RequiredFieldValidator>
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Password</h4>
+                        </td>
+                        <td colspan="2" style="background-color:cornflowerblue;width:200px;height:25px;text-align:center">
+                            <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="pwd" ErrorMessage="Password should be atleast 8 characters" OnServerValidate="CustomValidator1_ServerValidate" ValidationGroup="aa" Font-Size="Small" ForeColor="Red" ></asp:CustomValidator>
+                            <asp:TextBox ID="pwd" runat="server" OnTextChanged="pwd_TextChanged"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">                          
+                        <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Confirm Password</h4>  
+                        </td>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center"> 
+                            <asp:TextBox ID="cpwd" runat="server" ></asp:TextBox>
+                            <asp:CompareValidator ID="CompareValidator1" ControlToValidate="cpwd" runat="server" ErrorMessage="Password not matching" ControlToCompare="pwd" Font-Size="Small" ForeColor="#cc3300" ValidationGroup="aa"></asp:CompareValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">                          
+                        <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Country</h4>  
+                        </td>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center"> 
+                            <asp:DropDownList ID="ddcountry" runat="server">
+                                <asp:ListItem>America</asp:ListItem>
+                                <asp:ListItem>Australia</asp:ListItem>
+                                <asp:ListItem>India</asp:ListItem>
+                                <asp:ListItem>UK</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">                          
+                        <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Gender</h4>  
+                        </td>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center"> 
+                            <asp:RadioButtonList ID="rblgender" runat="server" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatDirection="Horizontal">
+                                <asp:ListItem>Male</asp:ListItem>
+                                <asp:ListItem>Female</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">                          
+                        <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Qualification</h4>  
+                        </td>
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;"> 
+                            <asp:CheckBoxList ID="cbqual" runat="server" OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged" RepeatLayout="Flow">
+                                <asp:ListItem>B.E</asp:ListItem>
+                                <asp:ListItem>B.Tech</asp:ListItem>
+                                <asp:ListItem>M.E</asp:ListItem>
+                                <asp:ListItem>M.Tech</asp:ListItem>
+                            </asp:CheckBoxList>
+                        </td>
+
+                    </tr>
+                   
+                    <tr>
+                       <td colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">
+                           <h4 style="margin-left:auto;margin-right:auto;color:aliceblue">Mobile Number</h4>
+
+                       </td>
+                      
+                        <td  colspan="2" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">
+                            <asp:TextBox ID="mobile" runat="server" ></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="mobile" ErrorMessage="Wrong Format" ForeColor="Red" ValidationExpression="^[789]\d{9}$" ValidationGroup="aa">Wrong Format</asp:RegularExpressionValidator>
+                            </td>
+
+                    </tr>
+                    <tr>
+                        <td  colspan="4" style="background-color:cornflowerblue;width:200px;height:30px;text-align:center">
+                            <asp:Button ID="Button1" runat="server" Text="Sign Up" Class="button" OnClick="Button1_Click" ValidationGroup="aa" />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                            </td>
+                    </tr>
+                </table>
+            </td>
+            <%--<td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:cornflowerblue;width:800px;height:25px">
+                
+            </td>
+            <%-- <td>&nbsp;</td>
+            <td>&nbsp;</td>--%>
+        </tr>
+    </table>
+    </form>
+    </body>
+</html>
